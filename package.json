@@ -1,0 +1,21 @@
+{
+  "name": "ratings",
+  "version": "1.0.0",
+  "description": "api ratings",
+  "main": "index.js",
+  "scripts": {
+    "start": "env-cmd -f ./.env nodemon src/app.js"
+  },
+  "author": "Fagner",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.6.4"
+  },
+  "devDependencies": {
+    "env-cmd": "^9.0.3",
+    "nodemon": "^1.19.1"
+  }
+}
