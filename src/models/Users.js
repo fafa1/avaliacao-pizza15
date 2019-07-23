@@ -3,16 +3,19 @@ const mongoose = require('mongoose')
 const  UserSchema = mongoose.Schema({
   nome: {
     type: String,
-    require: true
+    require: true,
   },
-  atendimento: {
-    type: Number
+  atendimentoTel: {
+    type: Number,
   },
   qualidade: {
-    type: Number
+    type: Number,
   },
-  entrega: {
-    type: Number
+  tmpEspera: {
+    type: Number,
+  },
+  tmpMotoboy: {
+    type: Number,
   },
   avaliacao: {
     type: String
