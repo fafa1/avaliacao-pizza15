@@ -7,7 +7,6 @@ import { VueStars } from "vue-stars"
 import BootstrapVue from 'bootstrap-vue'
 
 Vue.component("vue-stars", VueStars)
-Vue.component('star-rating', StarRating)
 
 Vue.use(BootstrapVue)
 
