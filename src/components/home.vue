@@ -30,7 +30,6 @@ export default {
 
   methods: {
     async proximo () {
-      debugger
       let nomeSave = await ratings.nomeUsuario(this.nome)
       // this.$root.$emit('home-nome', this.nome)
       this.$router.push('sobre')

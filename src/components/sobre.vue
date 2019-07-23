@@ -80,25 +80,15 @@ export default {
     }
   },
 
-  created () {
-    debugger
-    this.$root.$on('home-nome', function(nome){
-      console.log(nome)
-    })
-  },
-
   methods: {
-
     contNome () {
       this.nomeUsuario
     },
 
     valor (nome) {
-      debugger
       console.log(nome)
     },
     async enviar () {
-      debugger
       let resul = await ratings.avaliacao(this.nomeUsuario,this.atendimentoTel,this.qualidade, this.tmpEspera, this.tmpMotoboy, this.avaliacao)
       // debugger
       // resul.data
