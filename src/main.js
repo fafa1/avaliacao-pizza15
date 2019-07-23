@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import StarRating from 'vue-star-rating'
 import { VueStars } from "vue-stars"
 import BootstrapVue from 'bootstrap-vue'
 
