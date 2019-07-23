@@ -6,6 +6,10 @@ const router = express.Router()
 
 router.use(cors())
 
+router.get('/teste', (req, res) => {
+  res.send('teste') 
+})
+
 router.post('/home', async (req, res) => {
   console.log(req.body)
   try {
