@@ -15,7 +15,7 @@ export default new Router({
     //   component: Home
     // },
     {
-      path: '/sobre',
+      path: '/',
       name: sobre,
       component: sobre
     }
