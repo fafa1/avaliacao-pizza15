@@ -1,10 +1,12 @@
 <template>
   <div class="m-5">
     <nav class="mt-4 mb-3">
-      <router-link to="/">Home</router-link>
+      <!-- <router-link to="/">Home</router-link> -->
     </nav>
 
     <p>Por favor faça sua avaliação.</p>
+    <br>
+    <p>Primeiro digite seu nome e Sobrenome porfavor!</p>
 
 
     <!-- <div class="teste">
@@ -18,27 +20,39 @@
         <div class="mb-5">1</div>
         <div class="my-5 mx-5 pt-5 pb-5" >5</div>
     </div> -->
-    <h3>Atendimento</h3>
-    <vue-stars name="nome1" v-model="valor"></vue-stars>
+    <b-row class="my-1">
+      <b-col sm="4">
+        <label for="input-default">Nome e Sobrenome:</label>
+      </b-col>
+      <b-col sm="10">
+        <b-form-input id="input-default" v-model="nomeUsuario" placeholder="Digite seu nome"></b-form-input>
+      </b-col>
+    </b-row>
+    <br>
+
+    <div v-if="this.nomeUsuario.length >= 6">
+    <h3>Atendimento Telefone</h3>
+    <vue-stars name="nome1" v-model="atendimentoTel"></vue-stars>
 
     <h3>Qualidade da pizza</h3>
-    <vue-stars name="nome2" v-model="valor2"></vue-stars>
+    <vue-stars name="nome2" v-model="qualidade"></vue-stars>
 
-    <h3>Entrega</h3>
-    <vue-stars name="nome3"  v-model="valor3"></vue-stars>
+    <h3>Tempo de Espera</h3>
+    <vue-stars name="nome3"  v-model="tmpEspera"></vue-stars>
 
-    <h3>....</h3>
-    <vue-stars name="nome4" v-model="valor4"></vue-stars>
+    <h3>Atendimento Motoboy</h3>
+    <vue-stars name="nome4" v-model="tmpMotoboy"></vue-stars>
 
-    <h3>....</h3>
-    <vue-stars name="nome5" v-model="valor5"></vue-stars>
+    <!-- <h3>....</h3>
+    <vue-stars name="nome5" v-model="valor5"></vue-stars> -->
 
     <b-row class="mt-2">
-      <b-col sm="6">
-        <label for="textarea-large">Digite suas considerações</label>
+      <b-col :sm="9">
+        <label for="textarea-large">Deixe suas sugestões caso tenha alguma!</label>
       </b-col>
       <b-col :sm="10">
         <b-form-textarea
+          v-model="avaliacao"
           id="textarea-large"
           size="lg"
           placeholder="Sua avaliação"
@@ -46,21 +60,52 @@
       </b-col>
     </b-row>
     <br>
-    <b-button variant="success">Enviar</b-button>
+    <b-button @click="enviar" variant="success">Enviar</b-button>
+  </div>
   </div>
 </template>
 
 <script>
+import ratings from '../services/pizza15Api'
 export default {
+
   data() {
     return {
-      valor: 3,
-      valor2: 3,
-      valor3: 3,
-      valor4: 3,
-      valor5: 3
+      atendimentoTel: 3,
+      qualidade: 3,
+      tmpEspera: 3,
+      tmpMotoboy: 3,
+      avaliacao: '',
+      nomeUsuario: ''
     }
   },
+
+  created () {
+    debugger
+    this.$root.$on('home-nome', function(nome){
+      console.log(nome)
+    })
+  },
+
+  methods: {
+
+    contNome () {
+      this.nomeUsuario
+    },
+
+    valor (nome) {
+      debugger
+      console.log(nome)
+    },
+    async enviar () {
+      debugger
+      let resul = await ratings.avaliacao(this.nomeUsuario,this.atendimentoTel,this.qualidade, this.tmpEspera, this.tmpMotoboy, this.avaliacao)
+      // debugger
+      // resul.data
+      if(resul.status !== 201) return 
+      this.$router.push('home')
+    }
+  }
 
 }
 </script>
