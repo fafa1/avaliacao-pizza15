@@ -4,22 +4,11 @@
       <!-- <router-link to="/">Home</router-link> -->
     </nav>
 
-    <p>Por favor faça sua avaliação.</p>
-    <br>
-    <p>Primeiro digite seu nome e Sobrenome porfavor!</p>
+    <section class="text">
+      <p>Por favor faça sua avaliação.</p>
+      <p>Primeiro digite seu nome e Sobrenome!</p>
+    </section>
 
-
-    <!-- <div class="teste">
-    
-      <div class="d-flex flex-column p-2 mb-3">
-        <div class="align-self-end">1</div>
-        <div class="align-self-center">2</div>
-        <div class="align-self-start">3</div>
-      </div>
-
-        <div class="mb-5">1</div>
-        <div class="my-5 mx-5 pt-5 pb-5" >5</div>
-    </div> -->
     <b-row class="my-1">
       <b-col sm="4">
         <label for="input-default">Nome e Sobrenome:</label>
@@ -54,6 +43,7 @@
         <b-form-textarea
           v-model="avaliacao"
           id="textarea-large"
+          rows="3"
           size="lg"
           placeholder="Sua avaliação"
         ></b-form-textarea>
@@ -90,10 +80,12 @@ export default {
     },
     async enviar () {
       let resul = await ratings.avaliacao(this.nomeUsuario,this.atendimentoTel,this.qualidade, this.tmpEspera, this.tmpMotoboy, this.avaliacao)
-      // debugger
-      // resul.data
+      resul.data
       if(resul.status !== 201) return 
-      this.$router.push('home')
+      this.$nextTick(
+        //console.log('inserir vue loadin- https://codepen.io/CodinCat/pen/MpmVMp'),
+        this.$router.push('/home')
+      )
     }
   }
 
@@ -103,6 +95,10 @@ export default {
 <style>
   .vue-stars {
     font-size: 150%
+  }
+
+  .container {
+    color: black;
   }
 
   .teste div {
