@@ -19,9 +19,10 @@ export default {
 .container {
   /* margin-top: 10vh; */
   /* margin-bottom: 10vh; */
+  max-width: 900px;
   overflow-x: hidden;
   text-align: center;
-  background-image: linear-gradient(to right, rgba(235, 61, 61, 0.945), #b63f3f);
+  background-image: linear-gradient(180deg, red, green);
 }
 
 img {
@@ -32,11 +33,6 @@ img {
 
 .invisible {
   margin-bottom: 100%;
-}
-
-#center {
-  /* height: 250px; */
-  /* width: 250px; */
 }
 
 </style>
