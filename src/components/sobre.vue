@@ -32,9 +32,6 @@
     <h3>Atendimento Motoboy</h3>
     <vue-stars name="nome4" v-model="tmpMotoboy"></vue-stars>
 
-    <!-- <h3>....</h3>
-    <vue-stars name="nome5" v-model="valor5"></vue-stars> -->
-
     <b-row class="mt-2">
       <b-col :sm="9">
         <label for="textarea-large">Deixe suas sugestões caso tenha alguma!</label>
@@ -50,7 +47,7 @@
       </b-col>
     </b-row>
     <br>
-    <b-button @click="enviar" variant="success">Enviar</b-button>
+    <b-button @click="enviar" :disabled="ativo" variant="success">Enviar</b-button>
   </div>
   </div>
 </template>
@@ -61,6 +58,7 @@ export default {
 
   data() {
     return {
+      ativo: false,
       atendimentoTel: 3,
       qualidade: 3,
       tmpEspera: 3,
@@ -75,12 +73,9 @@ export default {
       this.nomeUsuario
     },
 
-    valor (nome) {
-      console.log(nome)
-    },
-    async enviar () {
+    enviar: async function(eve) {
+      if (eve) this.ativo = true
       let resul = await ratings.avaliacao(this.nomeUsuario,this.atendimentoTel,this.qualidade, this.tmpEspera, this.tmpMotoboy, this.avaliacao)
-      resul.data
       if(resul.status !== 201) return 
       this.$nextTick(
         //console.log('inserir vue loadin- https://codepen.io/CodinCat/pen/MpmVMp'),
