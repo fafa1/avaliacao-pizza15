@@ -3,10 +3,10 @@
 > avaliacoes
 
 ### Imagens da aplicação
-![](/src/imageReadme/avaliacaoPizza15_comentario.png)
-
 
 ![](/src/imageReadme/avaliacaoPizza15_logo.png)
+
+![](/src/imageReadme/avaliacaoPizza15_comentario.png)
 
 ## Build Setup
 
